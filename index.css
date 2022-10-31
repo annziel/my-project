@@ -1,0 +1,123 @@
+
+/* fonts */
+@font-face {
+    src: url("fonts/Sandblack demo.ttf");
+    font-family: Sandblack;
+}
+@font-face {
+    src: url("fonts/SourceSansPro-Regular.ttf");
+    font-family: SourceSansRegular;
+}
+@font-face {
+    src: url("fonts/SourceSansPro-Bold.ttf");
+    font-family: SourceSansBold;
+}
+
+/* typography */
+.bolded {
+    font-family: SourceSansBold, sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+.small-size {
+    font-size: 12px;
+}
+
+
+/* layout */
+body, html {
+    margin: 0;
+    width: auto;
+    background-color: #F5F5F5;
+    font-family: SourceSansRegular, sans-serif;
+    font-size: 13px;
+}
+
+header,
+section,
+.post-container {
+    margin: 0 auto 0 auto;
+    width: 375px;
+}
+
+header {
+    border-bottom: 1px solid #C6C6C6;
+}
+
+section {
+    background-color: #ededed;
+}
+
+header, .post-container {
+    background-color: #fff;
+}
+
+.post-container {
+    margin-bottom: 20px;
+}
+
+.header-container {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo {
+    margin: 0;
+    font-family: Sandblack, sans-serif;
+    font-size: 22px;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.author-section {
+    display: flex;
+    padding: 10px 15px;
+}
+
+.author-info {
+    margin: 2px 0 0 10px;
+}
+
+.post-photo {
+    width: 100%;
+}
+
+.icons-container {
+    margin: 20px 0 5px 15px;
+}
+
+.icons-container img {
+    height: 25px;
+    margin: 0 15px 0 0;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.likes-info, .comment-field {
+    margin-left: 15px;
+}
+
+.likes-info {
+    padding: 0 0 10px 0;
+}
+
+.comment-field {
+    /* display: flex; */
+    padding: 0 0 15px 0;
+}
+
+
+/* effects */
+.icons-container img:hover,
+.icons-container img:focus,
+.icons-container img:active {
+    background-color: #ededed;
+}
