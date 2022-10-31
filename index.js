@@ -1,71 +1,74 @@
 const section = document.getElementById("section")
 
 let postContainer
-let postNumber
 
 function renderPage () {
-    for (let postNumber = 0; postNumber < posts.length; postNumber++) { 
-        createPostContainer()
-        createAuthorSection(postNumber)
-        createPostPhoto(postNumber)
-        createReactions(postNumber)
-        create_renderLikes(postNumber)
-        createCommentField(postNumber)
+    for (let postNumber = 0; postNumber < posts.length; postNumber++) {
+        renderPost(posts[postNumber], postNumber)
     }
+}
+
+function renderPost(post, postNumber) {
+    createPostContainer()
+    createAuthorSection(post)
+    createPostPhoto(post)
+    createReactions(postNumber, post)
+    create_renderLikes(post)
+    createCommentField(post)
 }
 
 function createPostContainer() {
     postContainer = document.createElement("div")
-    postContainer.className = "post-container"
-    section.append(postContainer)
+        postContainer.className = "post-container"
+        section.append(postContainer)
 }
 
-function createAuthorSection(postNumber) {
+function createAuthorSection(post) {
     const authorSection = document.createElement("div")
-    authorSection.className = "author-section"
-    postContainer.append(authorSection)
-    authorSection.append(createAuthorAvatar(postNumber))
-    authorSection.append(createAuthorInfo(postNumber))
+        authorSection.className = "author-section"
+        postContainer.append(authorSection)
+        authorSection.append(createAuthorAvatar(post))
+        authorSection.append(createAuthorInfo(post))
 }
 
-function createAuthorAvatar(postNumber) {
+function createAuthorAvatar(post) {
     const authorAvatar = document.createElement("img")
-    authorAvatar.className = "avatar"
-    authorAvatar.src = posts[postNumber].avatar
-    authorAvatar.alt = "author's avatar";
+        authorAvatar.className = "avatar"
+        authorAvatar.src = post.avatar
+        authorAvatar.alt = "author's avatar";
     return authorAvatar;
 }
 
-function createAuthorInfo(postNumber) {
+function createAuthorInfo(post) {
     const authorInfo = document.createElement("div")
-    authorInfo.className = "author-info"
+        authorInfo.className = "author-info"
     
     const authorName = document.createElement("p")
-    authorName.className = "bolded"
-    authorName.textContent = `${posts[postNumber].name}`
-    authorInfo.append(authorName)
+        authorName.className = "bolded"
+        authorName.textContent = `${post.name}`
+        authorInfo.append(authorName)
     
     const authorLocation = document.createElement("p")
-    authorLocation.className = "small-size"
-    authorLocation.textContent = `${posts[postNumber].location}`
-    authorInfo.append(authorLocation)
+        authorLocation.className = "small-size"
+        authorLocation.textContent = `${post.location}`
+        authorInfo.append(authorLocation)
 
     return authorInfo
 }
 
-function createPostPhoto(postNumber) {
+function createPostPhoto(post) {
     const postPhoto = document.createElement("img")
-    postPhoto.className = "post-photo"
-    postPhoto.src = `${posts[postNumber].post}`
-    postPhoto.alt = "user's post"
-    postPhoto.style.backgroundImage = `${posts[postNumber].post}`
-    postContainer.append(postPhoto)
+        postPhoto.className = "post-photo"
+        postPhoto.src = `${post.post}`
+        postPhoto.alt = "user's post"
+        postPhoto.style.backgroundImage = `${post.post}`
+        postContainer.append(postPhoto)
 }
 
 function createReactions(postNumber) {
     const iconsContainer = document.createElement("div")
-    iconsContainer.className = "icons-container"
-    postContainer.append(iconsContainer)
+        iconsContainer.className = "icons-container"
+        postContainer.append(iconsContainer)
 
     const likeIcon = document.createElement("img")
         likeIcon.id = `likeIcon${postNumber}`
@@ -73,69 +76,70 @@ function createReactions(postNumber) {
         likeIcon.src = "images/icon-heart.png"
         likeIcon.alt = "like icon"
         iconsContainer.append(likeIcon)
-        
-        const commentIcon = document.createElement("img")
+    
+    const commentIcon = document.createElement("img")
         commentIcon.className = "reactions"
         commentIcon.src = "images/icon-comment.png"
         commentIcon.alt = "comment icon"
         iconsContainer.append(commentIcon)
-        
-        const shareIcon = document.createElement("img")
+    
+    const shareIcon = document.createElement("img")
         shareIcon.className = "reactions"  
         shareIcon.src = "images/icon-dm.png"
         shareIcon.alt = "share icon"
         iconsContainer.append(shareIcon)
 }
 
-function create_renderLikes(postNumber) {
+function create_renderLikes(post) {
     const likesInfo = document.createElement("p")
-    likesInfo.className = "likes-info bolded"
-    likesInfo.id = `likesInfo${postNumber}`
-    postContainer.append(likesInfo)
-    renderLikes(postNumber, likesInfo)
+        likesInfo.className = "likes-info bolded"
+        likesInfo.id = `likesInfo${post.id}`
+        postContainer.append(likesInfo)
+    renderLikes(post, likesInfo)
 
-    const likeBtn = document.getElementById(`likeIcon${postNumber}`)
+    const likeBtn = document.getElementById(`likeIcon${post.id}`)
     let likeBtnUse = "no"
     likeBtn.addEventListener("click", function() {
         if (likeBtnUse === "used") {
-            posts[postNumber].likes -= 1
-            renderLikes(postNumber, likesInfo)
+            post.likes -= 1
+            renderLikes(post, likesInfo)
             likeBtn.style.backgroundColor = "#fff"
             likeBtnUse = "no"
         }
         else {
-            posts[postNumber].likes += 1
-            renderLikes(postNumber, likesInfo)
+            post.likes += 1
+            renderLikes(post, likesInfo)
             likeBtn.style.backgroundColor = "#ededed"
             likeBtnUse = "used"
         }
     })
 }
 
-function renderLikes(postNumber, likesInfo) {
-    let formatedLikes = new Intl.NumberFormat("pl-PL").format(posts[postNumber].likes)
+function renderLikes(post, likesInfo) {
+    let formatedLikes = new Intl.NumberFormat("pl-PL").format(post.likes)
     likesInfo.textContent = `${formatedLikes} likes`
 }
 
-function createCommentField(postNumber) {
+function createCommentField(post) {
     const commentField = document.createElement("p")
-    commentField.className = "comment-field"
-    postContainer.append(commentField)
+        commentField.className = "comment-field"
+        postContainer.append(commentField)
     
     const username = document.createElement("span")
-    username.className = "bolded"
-    username.textContent = `${posts[postNumber].username}`
-    commentField.append(username)
+        username.className = "bolded"
+        username.textContent = `${post.username}`
+        commentField.append(username)
     
     const commentText = document.createElement("span")
-    commentText.textContent = ` ${posts[postNumber].comment}`
-    commentField.append(commentText)
+        commentText.textContent = ` ${post.comment}`
+        commentField.append(commentText)
 }
 
 
 // posts' content
 const posts = [
     {
+        id: 0,
         name: "Vincent van Gogh",
         username: "vincey1853",
         location: "Zundert, Netherlands",
@@ -145,6 +149,7 @@ const posts = [
         likes: 21854
     },
     {
+        id: 1,
         name: "Gustave Courbet",
         username: "gus1819",
         location: "Ornans, France",
@@ -154,6 +159,8 @@ const posts = [
         likes: 44763
     },
         {
+        
+        id: 2,
         name: "Joseph Ducreux",
         username: "jd1735",
         location: "Paris, France",
