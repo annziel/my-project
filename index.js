@@ -13,7 +13,7 @@ function renderPost(post) {
     createAuthorSection(post)
     createPostPhoto(post)
     createReactions(post)
-    create_renderLikes(post)
+    createLikesInfo(post)
     createCommentField(post)
 }
 
@@ -61,7 +61,6 @@ function createPostPhoto(post) {
         postPhoto.className = "post-photo"
         postPhoto.src = `${post.post}`
         postPhoto.alt = "user's post"
-        postPhoto.style.backgroundImage = `${post.post}`
         postContainer.append(postPhoto)
 }
 
@@ -90,7 +89,7 @@ function createReactions(post) {
         iconsContainer.append(shareIcon)
 }
 
-function create_renderLikes(post) {
+function createLikesInfo(post) {
     const likesInfo = document.createElement("p")
         likesInfo.className = "likes-info bolded"
         likesInfo.id = `likesInfo${post.id}`
@@ -101,13 +100,13 @@ function create_renderLikes(post) {
     let likeBtnUse = "no"
     likeBtn.addEventListener("click", function() {
         if (likeBtnUse === "used") {
-            post.likes -= 1
+            post.likes --
             renderLikes(post, likesInfo)
             likeBtn.style.backgroundColor = "#fff"
             likeBtnUse = "no"
         }
         else {
-            post.likes += 1
+            post.likes ++
             renderLikes(post, likesInfo)
             likeBtn.style.backgroundColor = "#ededed"
             likeBtnUse = "used"
@@ -116,7 +115,7 @@ function create_renderLikes(post) {
 }
 
 function renderLikes(post, likesInfo) {
-    let formatedLikes = new Intl.NumberFormat("pl-PL").format(post.likes)
+    const formatedLikes = new Intl.NumberFormat("pl-PL").format(post.likes)
     likesInfo.textContent = `${formatedLikes} likes`
 }
 
