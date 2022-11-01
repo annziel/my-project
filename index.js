@@ -4,15 +4,15 @@ let postContainer
 
 function renderPage () {
     for (let postNumber = 0; postNumber < posts.length; postNumber++) {
-        renderPost(posts[postNumber], postNumber)
+        renderPost(posts[postNumber])
     }
 }
 
-function renderPost(post, postNumber) {
+function renderPost(post) {
     createPostContainer()
     createAuthorSection(post)
     createPostPhoto(post)
-    createReactions(postNumber, post)
+    createReactions(post)
     create_renderLikes(post)
     createCommentField(post)
 }
@@ -65,13 +65,13 @@ function createPostPhoto(post) {
         postContainer.append(postPhoto)
 }
 
-function createReactions(postNumber) {
+function createReactions(post) {
     const iconsContainer = document.createElement("div")
         iconsContainer.className = "icons-container"
         postContainer.append(iconsContainer)
 
     const likeIcon = document.createElement("img")
-        likeIcon.id = `likeIcon${postNumber}`
+        likeIcon.id = `likeIcon${post.id}`
         likeIcon.className = "reactions"
         likeIcon.src = "images/icon-heart.png"
         likeIcon.alt = "like icon"
