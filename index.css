@@ -39,7 +39,7 @@ body, html {
 header,
 section,
 .post-container {
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
     width: 375px;
 }
 
