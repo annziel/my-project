@@ -1,6 +1,6 @@
 # Paintagram
 
-Want to know what famous painters Insta profiles would look like? Check out this app - Paintagram!
+Want to know what famous painters Insta profiles would look like? Check out this app - [Paintagram](https://annziel.github.io/paintagram/)!
 
 It's one of my solo projects during The Frontend Developer Career Path on Scrimba.
 
