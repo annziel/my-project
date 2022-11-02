@@ -13,3 +13,6 @@ Thanks to that, new posts can be easily displayed on the website.
 In JavaScript, it was all about `.createElement`, `.className`, and `.textContent`. Additionally, I've ensured the number of likes is displayed using my local number format. I've also added `:hover`, `:focus`, and `:active` CSS effects. Finally, I've renamed the app from "Oldagram" to "Paintagram" to refer to the community of the app's "users".
 
 The app has an interactive feature – click the heart under the posts you like and see the effect! (you can also change your mind.)
+
+## Here's what it looks like:
+<img width="400px" alt="Paintagram first look" src="images/paintagram first look.png">
